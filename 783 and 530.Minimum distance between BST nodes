@@ -1,0 +1,20 @@
+class Solution {
+public:
+ int minVal = INT_MAX;
+    TreeNode *prev;
+    
+    void inOrder(TreeNode *root) {
+        if(root == NULL) {
+            return;
+        }
+        inOrder(root->left);
+        if(prev) minVal = min(minVal, abs(root->val - prev->val));
+        prev = root;
+        inOrder(root->right);
+    }
+    
+    int minDiffInBST(TreeNode* root) {
+        inOrder(root);
+        return minVal;
+    }
+};
