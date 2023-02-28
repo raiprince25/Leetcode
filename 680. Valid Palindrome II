@@ -1,0 +1,27 @@
+class Solution {
+public:
+     bool truepalindrome(string s, int start ,int end){
+            while(start<end){
+            if(s[start]==s[end]){
+                start++;
+                end--;
+            }
+            else
+             return false;
+        }
+        return true;
+     }
+    bool validPalindrome(string s) {
+        int n=s.size();
+        int i=0;int j=n-1;int c=0;
+        while(i<j){
+            if(s[i]==s[j]){
+                i++;
+                j--;    
+            }
+            else 
+                return truepalindrome(s,i+1,j) ||truepalindrome(s,i,j-1);
+      }
+       return true;
+    }
+};
