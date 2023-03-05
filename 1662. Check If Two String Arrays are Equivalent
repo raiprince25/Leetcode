@@ -1,0 +1,16 @@
+class Solution {
+public:
+    bool arrayStringsAreEqual(vector<string>& word1, vector<string>& word2) {
+      string sum="";
+      string sum2="";
+      
+        for(auto i:word1)
+          sum+=i;
+      
+      for(auto j:word2)
+        sum2+=j;
+      
+      return sum==sum2;
+      
+    }
+};
