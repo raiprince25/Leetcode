@@ -1,0 +1,30 @@
+class Solution {
+  public:
+      TreeNode* convertToBST(ListNode* start, ListNode* end) {
+    if (start == end) {
+        return nullptr;
+    }
+    
+    ListNode* fast = start;
+    ListNode* slow = start;
+    
+    while (fast != end && fast->next != end) {
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+    
+    TreeNode* head = new TreeNode(slow->val);
+    head->left = convertToBST(start, slow);
+    head->right = convertToBST(slow->next, end);
+    
+    return head;
+}
+
+    
+public:
+    TreeNode* sortedListToBST(ListNode* head) {
+        if (head==NULL)
+          return NULL;
+        return convertToBST(head,NULL);
+    }
+};
