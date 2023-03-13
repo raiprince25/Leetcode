@@ -1,0 +1,20 @@
+class Solution {
+public:
+    bool isCheck(TreeNode* left , TreeNode* right){
+      if(!left && !right)
+        return true;
+      if( !left || !right)
+        return false;
+      bool check1=isCheck(left->left,right->right);
+     bool check2=isCheck(left->right,right->left);
+      
+      return (check1 && check2 && (left->val==right->val));
+    }
+    bool isSymmetric(TreeNode* root) {
+        if(root==NULL)
+          return true;
+         
+      else
+        return isCheck(root->left,root->right);
+    }
+};
