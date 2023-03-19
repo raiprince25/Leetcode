@@ -1,0 +1,22 @@
+class Solution {
+
+public:
+    void sumLeaf(TreeNode* root,int temp,int &ans){
+        if(root==NULL)
+        return;
+
+        temp=temp*10+root->val;
+
+        sumLeaf(root->left,temp,ans);
+        sumLeaf(root->right,temp,ans);
+        
+         if (root->left == NULL && root->right == NULL)
+            ans += temp;
+
+    }
+    int sumNumbers(TreeNode* root) {
+       int ans=0;
+       sumLeaf(root,0,ans);
+       return ans; 
+    }
+};
