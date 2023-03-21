@@ -1,0 +1,30 @@
+class Solution {
+  public:
+ void findCombination(int index,vector<vector<int>>& ans,vector<int>& ds, int target,vector<int> & arr){
+    if(index==arr.size()){
+      if(target==0)
+      {
+        ans.push_back(ds);
+      }    
+      return;
+    }
+  
+  
+  if(arr[index]<=target){
+    ds.push_back(arr[index]);
+    findCombination(index,ans,ds,target-arr[index],arr);
+    ds.pop_back();
+  }
+  findCombination(index+1,ans,ds,target,arr);
+}
+
+  
+public:
+    vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
+       vector<vector<int>> ans;
+      vector<int>ds;
+      int index;
+      findCombination(0,ans,ds,target,candidates);
+      return ans;
+    }
+};
