@@ -1,0 +1,15 @@
+class Solution {
+public:
+    int countMatches(vector<vector<string>>& items, string ruleKey, string ruleValue) {
+       int c=0;
+       int k=2;
+       if(ruleKey=="type")  k=0;
+       if(ruleKey=="color") k=1;
+
+       for(int i=0;i<items.size();i++){
+           if(items[i][k]==ruleValue)
+           c++;
+       }
+       return c;
+    }
+};
