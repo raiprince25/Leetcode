@@ -1,0 +1,28 @@
+class Solution {
+public:
+    string customSortString(string order, string s) {
+        string ans;
+        map<char,int>mp;
+        for(auto x:s){
+            mp[x]++;
+        }
+        for(auto temp:order){
+            if(mp.find(temp)!=mp.end()){
+                auto x=mp.find(temp);
+                int count=x->second;
+                string s1(count,temp);
+                ans.insert(ans.end(),s1.begin(),s1.end());
+                mp.erase(temp);
+            }
+        }
+
+        for(auto x:mp){
+            char ele=x.first;
+           int count=x.second;
+          string s2 (count,ele);
+           ans.insert(ans.end(),s2.begin(),s2.end());
+           mp.erase(ele);
+        }
+        return ans;
+    }
+};
